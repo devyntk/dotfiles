@@ -1,0 +1,7 @@
+[hostname]
+trim_at = ".cnvr"
+
+[time]
+disabled = false
+time_format = "%I:%M %P"
+utc_time_offset = "-5"
