@@ -1,3 +1,4 @@
-eval "$(starship init bash)"
+export TMUX_CONF=$HOME/.config/tmux/tmux.conf
+tmux source-file $TMUX_CONF
 
-export TZ=/usr/share/zoneinfo/America/Chicago
+eval "$(starship init bash)"

@@ -19,4 +19,7 @@ antigen bundle zsh-users/zsh-completions
 
 antigen apply
 
+export TMUX_CONF=$HOME/.config/tmux/tmux.conf
+tmux source-file $TMUX_CONF
+
 eval "$(starship init zsh)"
