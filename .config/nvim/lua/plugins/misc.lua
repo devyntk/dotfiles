@@ -21,6 +21,7 @@ return {
 	},
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 	"tpope/vim-surround", -- Surround stuff with the ys-, cs-, ds- commands
+	"lewis6991/spaceless.nvim",
 	{
 		"rcarriga/nvim-notify",
 		init = function() 

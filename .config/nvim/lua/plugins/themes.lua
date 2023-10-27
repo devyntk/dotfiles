@@ -8,5 +8,5 @@ return {
 			variant = "dawn"
 		}
 	},
-
+	{"loctvl842/monokai-pro.nvim"}
 }
