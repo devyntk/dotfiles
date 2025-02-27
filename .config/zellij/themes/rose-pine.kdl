@@ -1,0 +1,28 @@
+themes {
+    rose-pine-dawn {
+        fg "#9893a5" // base
+        bg "#797593" // subtle
+        black "#f4ede8" //highlight low
+        red 180 99 122 //love
+        green 40 105 131 //pine
+        yellow 234 157 52 //gold
+        blue 215 130 126 //rose
+        magenta 255 121 198
+        cyan 234 157 52 //gold
+        white "#9893a5" //muted
+        orange 234 157 52 //gold
+    }
+    rose-pine-dawn-ext {
+		bg "#faf4ed"
+		fg "#575279"
+		red "#b4637a"
+		green "#286983"
+		blue "#56949f"
+		yellow "#ea9d34"
+		magenta "#907aa9"
+		orange "#fe640b"
+		cyan "#d7827e"
+		black "#f2e9e1"
+		white "#575279"
+    }
+}

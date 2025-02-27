@@ -2,30 +2,75 @@
 return {
 	{
 		"lewis6991/gitsigns.nvim",
+		tag = "v1.0.1",
 		opts = {},
+		keys = {
+			{
+				"<leader>gb",
+				"<cmd>Gitsigns blame<cr>",
+				desc = "Show git blame",
+			},
+		},
 	},
 	{
 		"akinsho/git-conflict.nvim",
-		commit = "2957f74",
-		config = function()
-			require("git-conflict").setup({
-				default_mappings = {
-					ours = "co",
-					theirs = "ct",
-					none = "c0",
-					both = "cb",
-					next = "cn",
-					prev = "cp",
-				},
-			})
-		end,
+		tag = "v2.1.0",
+		opts = {
+			default_mappings = {
+				ours = "co",
+				theirs = "ct",
+				none = "c0",
+				both = "cb",
+				next = "cn",
+				prev = "cp",
+			},
+		},
 	},
 	{
-		"tpope/vim-fugitive",
-		config = function ()
-			local map = require("helpers.keys").map
-			map("n", "<leader>ga", "<cmd>Git add %<cr>", "Stage the current file")
-			map("n", "<leader>gb", "<cmd>Git blame<cr>", "Show the blame")
-		end
-	}
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"sindrets/diffview.nvim", -- optional - Diff integration
+		},
+		opts = {
+			kind = "floating",
+		},
+		keys = {
+			{
+				"<leader>gc",
+				function()
+					require("neogit").open({ "commit" })
+				end,
+				desc = "Commit",
+			},
+			{
+				"<leader>gr",
+				function()
+					require("neogit").open({ "rebase" })
+				end,
+				desc = "Rebase",
+			},
+			{
+				"<leader>gf",
+				function()
+					require("neogit").open({ "fetch" })
+				end,
+				desc = "Fetch",
+			},
+			{
+				"<leader>ga",
+				function()
+					require("neogit").open({ "branch" })
+				end,
+				desc = "Branch",
+			},
+			{
+				"<leader>gg",
+				function()
+					require("neogit").open()
+				end,
+				desc = "Open Neogit",
+			},
+		},
+	},
 }

@@ -12,7 +12,7 @@ return {
 			require("mini.move").setup()
 		end,
 	},
-	-- Better buffer closing actions. Available via the buffers helper.
+	-- Better buffer closing actions.
 	{
 		"kazhala/close-buffers.nvim",
 		opts = {
@@ -21,11 +21,17 @@ return {
 	},
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 	"tpope/vim-surround", -- Surround stuff with the ys-, cs-, ds- commands
+	{
+		"embear/vim-localvimrc", -- Source .lvimrc files
+		init = function()
+			vim.g.localvimrc_persistent = 1
+		end,
+	},
 	"lewis6991/spaceless.nvim",
 	{
 		"rcarriga/nvim-notify",
-		init = function() 
-			vim.notify = require("notify")
-        end
-	}
+		opts = {
+			render = "wrapped-compact",
+		},
+	},
 }

@@ -1,8 +1,7 @@
--- Handle plugins with lazy.nvim
+require("core.options")
+require("core.env")
 require("core.lazy")
-
--- General Neovim keymaps
 require("core.keymaps")
 
--- Other options
-require("core.options")
+local colorscheme = require("helpers.colorscheme")
+vim.cmd.colorscheme(colorscheme)

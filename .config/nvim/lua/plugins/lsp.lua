@@ -5,29 +5,32 @@ return {
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
-			"folke/neodev.nvim",
+			"folke/lazydev.nvim",
+			"j-hui/fidget.nvim",
 			"RRethy/vim-illuminate",
-			"hrsh7th/cmp-nvim-lsp",
+			{ "ms-jpq/coq_nvim", branch = "coq" },
+			{ "ms-jpq/coq.artifacts", branch = "artifacts" },
 		},
+		lazy = false,
+		init = function()
+			vim.g.coq_settings = {
+				auto_start = "shut-up",
+			}
+		end,
 		config = function()
 			-- Set up Mason before anything else
 			require("mason").setup()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
-					"pylsp",
+					"pyright",
+					"taplo",
 				},
 				automatic_installation = true,
 			})
 
 			-- Quick access via keymap
 			require("helpers.keys").map("n", "<leader>M", "<cmd>Mason<cr>", "Show Mason")
-
-			-- Neodev setup before LSP config
-			require("neodev").setup()
-
-			-- Turn on LSP status information
-			require("fidget").setup()
 
 			-- Set up cool signs for diagnostics
 			local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -71,81 +74,59 @@ return {
 				lsp_map("K", vim.lsp.buf.hover, bufnr, "Hover Documentation")
 				lsp_map("gD", vim.lsp.buf.declaration, bufnr, "Goto Declaration")
 
-				-- Create a command `:Format` local to the LSP buffer
-				vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-					vim.lsp.buf.format()
-				end, { desc = "Format current buffer with LSP" })
-
-				lsp_map("<leader>ff", "<cmd>Format<cr>", bufnr, "Format")
-
 				-- Attach and configure vim-illuminate
 				require("illuminate").on_attach(client)
 			end
 
 			-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+			local coq_capabilities = require("coq").lsp_ensure_capabilities(capabilities)
+			default_setup = { capabilities = coq_capabilities, on_attach = on_attach }
 
-			-- Lua
-			require("lspconfig")["lua_ls"].setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				settings = {
-					Lua = {
-						completion = {
-							callSnippet = "Replace",
-						},
-						diagnostics = {
-							globals = { "vim" },
-						},
-						workspace = {
-							library = {
-								[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-								[vim.fn.stdpath("config") .. "/lua"] = true,
-							},
-						},
-					},
-				},
-			})
+			local handlers = {
+				function(server_name)
+					require("lspconfig")[server_name].setup(default_setup)
+				end,
+			}
 
-			-- Python
-			require("lspconfig")["pylsp"].setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				settings = {
-					pylsp = {
-						plugins = {
-							flake8 = {
-								enabled = true,
-								maxLineLength = 79, -- Black's line length
-							},
-							-- Disable plugins overlapping with flake8
-							pycodestyle = {
-								enabled = false,
-							},
-							mccabe = {
-								enabled = false,
-							},
-							pyflakes = {
-								enabled = false,
-							},
-							-- Use Black as the formatter
-							autopep8 = {
-								enabled = false,
-							},
-						},
-					},
-				},
-			})
-			require("lspconfig").yamlls.setup({
-			  settings = {
-				yaml = { keyOrdering = true },
-			  },
-			})
+			require("mason-lspconfig").setup_handlers(handlers)
 		end,
 	},
 	{
 		"j-hui/fidget.nvim",
-		tag = "legacy",
-	}
+		opts = {
+			notification = {
+				override_vim_notify = true,
+			},
+		},
+	},
+	{
+		"dgagn/diagflow.nvim",
+		opts = {
+			format = function(diagnostic)
+				return string.format(
+					"[%s] %s: %s [%s]",
+					diagnostic.source,
+					diagnostic.code,
+					diagnostic.message,
+					vim.diagnostic.severity[diagnostic.severity]
+				)
+			end,
+			scope = "line",
+		},
+	},
+	{
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {
+			library = {
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+			},
+			integrations = {
+				coq = true,
+			},
+		},
+	},
 }
