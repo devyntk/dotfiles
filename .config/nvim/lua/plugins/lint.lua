@@ -3,15 +3,14 @@ return {
 		"mfussenegger/nvim-lint",
 		dependencies = { "stevearc/conform.nvim" },
 		init = function()
-			local python_linters = { "pylint", "isort", "black", "flake8" }
+			local python_linters = { "pylint", "flake8" }
 			if require("conform").get_formatter_info("ruff_format").available then
 				python_linters = { "ruff" }
 			end
 
 			require("lint").linters_by_ft = {
-				lua = { "stylua" },
+				lua = { "luac" },
 				puppet = { "puppet-lint" },
-				terraform = { "terraform" },
 				python = python_linters,
 			}
 			local puppetlint = vim.fs.find({ ".puppetlint.rc" }, { type = "file" })

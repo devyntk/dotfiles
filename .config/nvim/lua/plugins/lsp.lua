@@ -8,15 +8,9 @@ return {
 			"folke/lazydev.nvim",
 			"j-hui/fidget.nvim",
 			"RRethy/vim-illuminate",
-			{ "ms-jpq/coq_nvim", branch = "coq" },
-			{ "ms-jpq/coq.artifacts", branch = "artifacts" },
+			"saghen/blink.cmp",
 		},
 		lazy = false,
-		init = function()
-			vim.g.coq_settings = {
-				auto_start = "shut-up",
-			}
-		end,
 		config = function()
 			-- Set up Mason before anything else
 			require("mason").setup()
@@ -80,8 +74,8 @@ return {
 
 			-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			local coq_capabilities = require("coq").lsp_ensure_capabilities(capabilities)
-			default_setup = { capabilities = coq_capabilities, on_attach = on_attach }
+			local cmp_capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+			local default_setup = { capabilities = cmp_capabilities, on_attach = on_attach }
 
 			local handlers = {
 				function(server_name)
@@ -91,6 +85,28 @@ return {
 
 			require("mason-lspconfig").setup_handlers(handlers)
 		end,
+	},
+	{
+		"saghen/blink.cmp",
+		dependencies = "rafamadriz/friendly-snippets",
+		version = "v0.13.1",
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		opts = {
+			keymap = { preset = "super-tab" },
+			signature = { enabled = true },
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer", "lazydev" },
+				providers = {
+					lazydev = {
+						name = "LazyDev",
+						module = "lazydev.integrations.blink",
+						-- make lazydev completions top priority (see `:h blink.cmp`)
+						score_offset = 100,
+					},
+				},
+			},
+		},
 	},
 	{
 		"j-hui/fidget.nvim",
