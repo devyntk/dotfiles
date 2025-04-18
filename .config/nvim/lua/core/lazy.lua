@@ -26,10 +26,6 @@ lazy.setup({
         { import = "plugins" },
         { import = "plugins.lang" },
     },
-    custom_keys = {
-        ["<leader>L"] = {
-            lazy.show,
-            desc = "Show Lazy",
-        },
-    },
 })
+
+require("helpers.keys").map("n", "<leader>L", lazy.show, "Show Lazy")
