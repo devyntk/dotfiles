@@ -10,7 +10,12 @@ map("n", "<leader>qq", "<cmd>q<cr>", "Quit")
 map("n", "<leader>qa", "<cmd>qa!<cr>", "Quit all")
 
 -- Diagnostic keymaps
-map('n', '<leader>d',"lua vim.diagnostic.open_float(0, {scope='line'})", "Show diagnostics under cursor")
+map(
+    "n",
+    "<leader>d",
+    "lua vim.diagnostic.open_float(0, {scope='line'})",
+    "Show diagnostics under cursor"
+)
 
 -- Easier access to beginning and end of lines
 map("n", "<M-h>", "^", "Go to beginning of line")
@@ -34,7 +39,6 @@ map("n", "<C-Down>", ":resize -2<CR>")
 map("n", "<C-Left>", ":vertical resize +2<CR>")
 map("n", "<C-Right>", ":vertical resize -2<CR>")
 
-
 -- Navigate buffers
 map("n", "<S-l>", ":bnext<CR>")
 map("n", "<S-h>", ":bprevious<CR>")
@@ -42,7 +46,6 @@ map("n", "<S-h>", ":bprevious<CR>")
 -- Stay in indent mode
 map("v", "<", "<gv")
 map("v", ">", ">gv")
-
 
 -- Clear after search
 map("n", "<leader>ur", "<cmd>nohl<cr>", "Clear highlights")
