@@ -78,11 +78,11 @@ local get_venv = function()
     return nil
 end
 
-local python_venv_dir = get_venv()
-if python_venv_dir ~= nil then
-    vim.g.custom_python_venv = python_venv_dir
-    local python_bin = python_venv_dir .. "/bin"
-    vim.g.python3_host_prog = python_bin .. "/python"
-    vim.cmd("let $PATH = '" .. python_bin .. ":' . $PATH")
-    vim.fn.setenv("VIRTUAL_ENV", venv)
-end
+-- local python_venv_dir = get_venv()
+-- if python_venv_dir ~= nil then
+--     vim.g.custom_python_venv = python_venv_dir
+--     local python_bin = python_venv_dir .. "/bin"
+--     vim.g.python3_host_prog = python_bin .. "/python"
+--     vim.cmd("let $PATH = '" .. python_bin .. ":' . $PATH")
+--     vim.fn.setenv("VIRTUAL_ENV", venv)
+-- end

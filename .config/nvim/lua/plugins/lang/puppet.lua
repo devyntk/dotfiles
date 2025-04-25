@@ -17,14 +17,9 @@ return {
             formatters = {
                 ["puppet-lint"] = {
                     append_args = function()
-                        local puppetlint = vim.fs.find(
-                            { ".puppetlint.rc" },
-                            { type = "file" }
-                        )
+                        local puppetlint = vim.fs.find({ ".puppetlint.rc" }, { type = "file" })
 
-                        if #puppetlint > 0 then
-                            return { "--config=", puppetlint[1] }
-                        end
+                        if #puppetlint > 0 then return { "--config=", puppetlint[1] } end
                         return nil
                     end,
                 },
@@ -39,10 +34,7 @@ return {
             },
             linter_overrides = {
                 ["puppet-lint"] = function(linter)
-                    local puppetlint = vim.fs.find(
-                        { ".puppetlint.rc" },
-                        { type = "file" }
-                    )
+                    local puppetlint = vim.fs.find({ ".puppetlint.rc" }, { type = "file" })
 
                     if #puppetlint > 0 then
                         linter.args = {
