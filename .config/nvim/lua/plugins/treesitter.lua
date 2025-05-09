@@ -21,6 +21,7 @@ return {
                 "json",
                 "just",
                 "kdl",
+                "regex",
                 "toml",
                 "vim",
                 "yaml",

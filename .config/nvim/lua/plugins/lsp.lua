@@ -24,9 +24,6 @@ return {
             })
 
             require("mason-lspconfig").setup()
-
-            local handlers = vim.tbl_extend("error", { require("helpers.lsp").setup_lsp({}) }, opts.handlers)
-            require("mason-lspconfig").setup_handlers(handlers)
         end,
         keys = {
             { "<leader>M", "<cmd>Mason<cr>", { "n" }, desc = "Show Mason" },

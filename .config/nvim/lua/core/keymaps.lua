@@ -49,3 +49,9 @@ map("v", ">", ">gv")
 
 -- Clear after search
 map("n", "<leader>ur", "<cmd>nohl<cr>", "Clear highlights")
+
+-- LSP
+map("n", "<leader>lr", vim.lsp.buf.rename, "Rename symbol")
+map("n", "<leader>la", vim.lsp.buf.code_action, "Code action")
+map("n", "<leader>ld", vim.lsp.buf.type_definition, "Type definition")
+map("n", "K", vim.lsp.buf.hover, "Hover Documentation")

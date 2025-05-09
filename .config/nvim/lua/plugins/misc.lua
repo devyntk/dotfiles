@@ -17,7 +17,7 @@ return {
             preserve_window_layout = { "this", "nameless" },
         },
     },
-    "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
+    "nmac427/guess-indent.nvim", -- Detect tabstop and shiftwidth automatically
     "tpope/vim-surround", -- Surround stuff with the ys-, cs-, ds- commands
     {
         "embear/vim-localvimrc", -- Source .lvimrc files
