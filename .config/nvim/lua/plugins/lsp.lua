@@ -52,19 +52,19 @@ return {
             },
         },
     },
-    {
-        "dgagn/diagflow.nvim",
-        opts = {
-            format = function(diagnostic)
-                return string.format(
-                    "[%s] %s: %s [%s]",
-                    diagnostic.source,
-                    diagnostic.code,
-                    diagnostic.message,
-                    vim.diagnostic.severity[diagnostic.severity]
-                )
-            end,
-            scope = "line",
-        },
-    },
+    -- {
+    --     "dgagn/diagflow.nvim",
+    --     opts = {
+    --         format = function(diagnostic)
+    --             return string.format(
+    --                 "[%s] %s: %s [%s]",
+    --                 diagnostic.source,
+    --                 diagnostic.code,
+    --                 diagnostic.message,
+    --                 vim.diagnostic.severity[diagnostic.severity]
+    --             )
+    --         end,
+    --         scope = "line",
+    --     },
+    -- },
 }

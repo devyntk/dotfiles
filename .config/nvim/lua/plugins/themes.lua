@@ -18,13 +18,15 @@ end
 
 return {
     {
-        "rose-pine/nvim",
+        "rose-pine/neovim",
         name = "rose-pine",
-        opts = {
-            variant = "auto",
-        },
+        priority = 1000,
     },
-    { "catppuccin/nvim", name = "catppuccin" },
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 900
+    },
     {
         "zaldih/themery.nvim",
         lazy = false,
@@ -33,5 +35,6 @@ return {
                 themes = get_colorschemes(),
             }
         end,
+        priority = 900,
     },
 }

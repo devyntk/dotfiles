@@ -1,17 +1,17 @@
 -- Git related plugins
 return {
-    {
-        "lewis6991/gitsigns.nvim",
-        tag = "v1.0.1",
-        opts = {},
-        keys = {
-            {
-                "<leader>gb",
-                "<cmd>Gitsigns blame<cr>",
-                desc = "Show git blame",
-            },
-        },
-    },
+    -- {
+    --     "lewis6991/gitsigns.nvim",
+    --     tag = "v1.0.1",
+    --     opts = {},
+    --     keys = {
+    --         {
+    --             "<leader>gb",
+    --             "<cmd>Gitsigns blame<cr>",
+    --             desc = "Show git blame",
+    --         },
+    --     },
+    -- },
     {
         "akinsho/git-conflict.nvim",
         tag = "v2.1.0",

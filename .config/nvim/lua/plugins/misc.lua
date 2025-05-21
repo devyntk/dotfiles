@@ -31,20 +31,21 @@ return {
         opts = {
             bigfile = { enabled = true },
             dashboard = { enabled = true },
-            explorer = { enabled = true },
+            -- explorer = { enabled = true },
             indent = { enabled = true },
             input = { enabled = true },
             notifier = { enabled = true },
             picker = { enabled = true },
             quickfile = { enabled = true },
             scroll = { enabled = true },
-            statuscolumn = { enabled = true },
+            statuscolumn = { enabled = true, folds = {git_hl = true} },
         },
+        priority = 1000,
         keys = {
             { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
             { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
             { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
-            { "<leader>e", function() Snacks.explorer.open() end, desc = "Open file explorer" },
+            -- { "<leader>e", function() Snacks.explorer.open() end, desc = "Open file explorer" },
             { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
             { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
             { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
@@ -88,6 +89,12 @@ return {
 
             { "<c-/>", function() Snacks.terminal() end, desc = "Toggle Terminal" },
             { "<c-_>", function() Snacks.terminal() end, desc = "which_key_ignore" },
+
+            -- profiler
+            { "<leader>pp", function() Snacks.toggle.profiler() end, desc = "Toggle profiler" },
+            { "<leader>ph", function() Snacks.toggle.profiler_highlights() end, desc = "Toggle profiler highlights" },
+            { "<leader>ps", function() Snacks.profiler.scratch() end, desc = "Profiler Scratch Buffer" },
+
         },
         init = function()
             vim.api.nvim_create_autocmd("User", {
