@@ -1,6 +1,16 @@
+-- when jedi is installed, only use it for code actions
+-- hover and diagnostics come from pyright, so don't duplicate
+vim.lsp.config("jedi_language_server", {
+    init_options = {
+        diagnostics = { enable = false },
+        hover = { enable = false },
+        ["jediSettings"] = { debug = true },
+    },
+})
+
 return {
     {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         opts = {
             install = {
                 "pyright",
@@ -20,12 +30,7 @@ return {
         opts = {
             formatters_by_ft = {
                 python = function(bufnr)
-                    if
-                        require("conform").get_formatter_info(
-                            "ruff_format",
-                            bufnr
-                        ).available
-                    then
+                    if require("conform").get_formatter_info("ruff_format", bufnr).available then
                         return {
                             "ruff_organize_imports",
                             "ruff_fix",
@@ -42,9 +47,7 @@ return {
         "mfussenegger/nvim-lint",
         opts = {
             linter_selection = {
-                python = function(_)
-                    return require("helpers.python").get_linters()
-                end,
+                python = function(_) return require("helpers.python").get_linters() end,
             },
         },
     },
@@ -55,8 +58,7 @@ return {
         },
         opts = {
             on_venv_activate_callback = function()
-                require("lint").linters_by_ft.python =
-                    require("helpers.python").get_linters()
+                require("lint").linters_by_ft.python = require("helpers.python").get_linters()
             end,
         },
         event = "VeryLazy",
@@ -70,7 +72,7 @@ return {
         branch = "nvim11", -- upstream does not support nvim 0.11 api, using fork
         opts = {},
         keys = {
-            { "<leader>li", function() require("lspimport").import() end , desc = "Automatic Import" }
+            { "<leader>li", function() require("lspimport").import() end, desc = "Automatic Import" },
         },
-    }
+    },
 }

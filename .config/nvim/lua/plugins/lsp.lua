@@ -2,10 +2,10 @@ local keys = require("helpers.keys")
 -- LSP Configuration & Plugins
 return {
     {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         dependencies = {
             "neovim/nvim-lspconfig",
-            "williamboman/mason-lspconfig.nvim",
+            "mason-org/mason-lspconfig.nvim",
 
             "WhoIsSethDaniel/mason-tool-installer.nvim",
             "RRethy/vim-illuminate",

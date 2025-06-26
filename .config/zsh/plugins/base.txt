@@ -1,5 +1,3 @@
-mattberther/zsh-pyenv
-
 # fish like syntax highlithting
 zsh-users/zsh-syntax-highlighting
 

@@ -1,5 +1,13 @@
 return {
     {
+        "mason-org/mason.nvim",
+        opts = {
+            install = {
+                "puppet-editor-services",
+            },
+        },
+    },
+    {
         "nvim-treesitter/nvim-treesitter",
         opts = {
             ensure_installed = {
