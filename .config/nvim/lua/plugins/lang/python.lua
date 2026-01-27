@@ -62,7 +62,7 @@ return {
             end,
         },
         event = "VeryLazy",
-        branch = "regexp",
+        branch = "main",
         keys = {
             { "<leader>v", "<cmd>VenvSelect<cr>" },
         },

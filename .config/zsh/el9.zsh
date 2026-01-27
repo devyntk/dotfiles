@@ -1,4 +1,5 @@
 source "$HOME"/.config/zsh/antidote.zsh
+source "$HOME"/.config/zsh/rbenv.zsh
 
 function zr () { zellij run --name "$*" -- zsh -ic "$*";}
 function zrf () { zellij run --name "$*" --floating -- zsh -ic "$*";}
@@ -8,3 +9,5 @@ function zef () { zellij edit --floating "$*";}
 path+=('/home/dekeeney/bin')
 alias nvim="/home/dekeeney/bin/nvim"
 export EDITOR=/home/dekeeney/bin/nvim
+
+
