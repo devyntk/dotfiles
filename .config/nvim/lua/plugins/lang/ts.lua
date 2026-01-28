@@ -5,6 +5,7 @@ return {
             install = {
                 "eslint-lsp",
                 "typescript-language-server",
+                "svelte-language-server",
                 "prettierd",
             },
         },
@@ -18,6 +19,7 @@ return {
                 "javascript",
                 "jsdoc",
                 "scss",
+                "svelte",
                 "typescript",
             },
         },
@@ -28,6 +30,7 @@ return {
             formatters_by_ft = {
                 typescript = { "prettierd" },
                 javascript = { "prettierd" },
+                svelte = { "prettierd" },
             },
         },
     },
