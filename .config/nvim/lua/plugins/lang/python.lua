@@ -57,12 +57,20 @@ return {
             "neovim/nvim-lspconfig",
         },
         opts = {
-            on_venv_activate_callback = function()
-                require("lint").linters_by_ft.python = require("helpers.python").get_linters()
-            end,
+            options = {
+                on_venv_activate_callback = function()
+                    local lint = require("lint")
+                    local previous_linters = lint.linters_by_ft["python"]
+                    for _, linter in pairs(previous_linters) do
+                        vim.diagnostic.reset(lint.get_namespace(linter))
+                    end
+                    local linters = require("helpers.python").get_linters()
+                    lint.linters_by_ft["python"] = linters
+                    lint.try_lint()
+                end,
+            }
         },
-        event = "VeryLazy",
-        branch = "main",
+        ft = "python",
         keys = {
             { "<leader>v", "<cmd>VenvSelect<cr>" },
         },
