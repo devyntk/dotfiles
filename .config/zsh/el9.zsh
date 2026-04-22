@@ -6,8 +6,8 @@ function zrf () { zellij run --name "$*" --floating -- zsh -ic "$*";}
 function ze () { zellij edit "$*";}
 function zef () { zellij edit --floating "$*";}
 
-path+=('/home/dekeeney/bin')
-alias nvim="/home/dekeeney/bin/nvim"
-export EDITOR=/home/dekeeney/bin/nvim
+path+=("${HOME}/.local/bin")
+alias nvim="${HOME}/.local/bin/nvim"
+export EDITOR=/home/dekeeney/.local/bin/nvim
 
 
