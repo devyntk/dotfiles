@@ -7,7 +7,6 @@ function ze () { zellij edit "$*";}
 function zef () { zellij edit --floating "$*";}
 
 path+=("${HOME}/.local/bin")
-alias nvim="${HOME}/.local/bin/nvim"
-export EDITOR=/home/dekeeney/.local/bin/nvim
+export EDITOR=nvim
 
-
+eval "$(~/.local/bin/mise activate zsh)"

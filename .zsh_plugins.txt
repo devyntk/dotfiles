@@ -1,14 +1,6 @@
 mattberther/zsh-pyenv
 
-# fish like syntax highlithting
-zsh-users/zsh-syntax-highlighting
 
-  # Fish-like auto suggestions
-zsh-users/zsh-autosuggestions
-
-  # Extra zsh completions
-zsh-users/zsh-completions
-zsh-users/zsh-history-substring-search
 
 ohmyzsh/ohmyzsh path:lib
 ohmyzsh/ohmyzsh path:plugins/iterm2
@@ -17,3 +9,15 @@ ohmyzsh/ohmyzsh path:plugins/git
 3v1n0/zsh-bash-completions-fallback
 sunlei/zsh-ssh
 lukechilds/zsh-nvm
+
+# Extra zsh completions
+zsh-users/zsh-completions
+zsh-users/zsh-history-substring-search
+
+# Fish-like auto suggestions
+zsh-users/zsh-autosuggestions
+
+# fish like syntax highlithting
+# must be last
+zsh-users/zsh-syntax-highlighting
+

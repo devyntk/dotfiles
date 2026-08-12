@@ -10,14 +10,6 @@ vim.lsp.config("jedi_language_server", {
 
 return {
     {
-        "mason-org/mason.nvim",
-        opts = {
-            install = {
-                "pyright",
-            },
-        },
-    },
-    {
         "nvim-treesitter/nvim-treesitter",
         opts = {
             ensure_installed = {

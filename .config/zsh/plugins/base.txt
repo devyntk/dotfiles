@@ -1,7 +1,4 @@
-# fish like syntax highlithting
-zsh-users/zsh-syntax-highlighting
-
-  # Fish-like auto suggestions
+# Fish-like auto suggestions
 zsh-users/zsh-autosuggestions
 
   # Extra zsh completions
@@ -15,3 +12,7 @@ ohmyzsh/ohmyzsh path:plugins/git
 3v1n0/zsh-bash-completions-fallback
 sunlei/zsh-ssh
 lukechilds/zsh-nvm
+
+# fish like syntax highlithting
+# must be last
+zsh-users/zsh-syntax-highlighting
