@@ -65,6 +65,7 @@ return {
         ft = "python",
         keys = {
             { "<leader>v", "<cmd>VenvSelect<cr>" },
+            { "<leader>lR", function() require("venv-selector").restart_lsp_servers() end, desc = "Restart Python LSP" },
         },
     },
     {

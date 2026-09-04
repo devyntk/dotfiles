@@ -145,7 +145,7 @@ disable_with_jj = true
 type = "jujutsu"
 style = "plain"
 foreground = "p:git"
-template = "{{ .Working.String }}  {{.ClosestBookmarks}}  {{.ChangeIDPrefix}}<p:muted>{{.ChangeIDRest}}</> "
+template = "{{ .Working.String }}  {{.ClosestBookmarks}}  <b>{{.ChangeIDPrefix}}</b><p:muted>{{.ChangeIDRest}}</> "
 
 [blocks.segments.properties]
 fetch_status = true
